@@ -29,18 +29,27 @@
       </div>
     </header>
 
-    <!-- Hero Section -->
+    <!-- Hero Section with Live Cluster Preview -->
     <section class="hero">
       <div class="container">
-        <h2>Welcome to the Convergence Platform</h2>
-        <p>Submit your insights anonymously. Watch clusters emerge. Participate in governance phases safely.</p>
+        <h2>Welcome to Wethemachines</h2>
+        <p>
+          Submit anonymously, watch clusters emerge, and participate in governance phases safely.
+        </p>
+
+        <!-- Live stats (React renders here) -->
+        <div id="hero-stats">
+          <!-- React will insert phase, submissions, cluster previews dynamically -->
+        </div>
+
         <a href="#root" class="cta-button">Enter Platform</a>
       </div>
     </section>
 
-    <!-- React Root -->
+    <!-- React root -->
     <div id="root"></div>
 
+    <!-- No-JS fallback -->
     <noscript>
       <div style="text-align:center; margin-top:2rem; font-family: system-ui;">
         <h1>Wethemachines</h1>
@@ -50,4 +59,3 @@
     </noscript>
   </body>
 </html>
-
