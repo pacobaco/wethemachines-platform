@@ -1,5 +1,4 @@
 export default async function handler(req, res) {
-  // mock data
   const cycle = {
     phase: "Input",
     submissions: 42,
