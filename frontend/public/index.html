@@ -42,7 +42,17 @@
           <!-- React will insert phase, submissions, cluster previews dynamically -->
         </div>
 
-        <a href="#root" class="cta-button">Enter Platform</a>
+             <button
+  className="cta-button"
+  onClick={() => {
+    const el = document.getElementById("dashboard");
+    if (el) {
+      el.scrollIntoView({ behavior: "smooth" });
+    }
+  }}
+>
+  Enter Platform
+</button>
       </div>
     </section>
 
