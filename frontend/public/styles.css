@@ -51,6 +51,17 @@ body {
   margin: 0 auto 2rem auto;
 }
 
+/* Hero Bubble Chart */
+.hero svg circle {
+  cursor: pointer;
+  transition: transform 0.3s, fill 0.3s;
+}
+.hero svg circle:hover {
+  transform: scale(1.2);
+  fill-opacity: 0.8;
+}
+
+
 /* CTA Button */
 .cta-button {
   display: inline-block;
