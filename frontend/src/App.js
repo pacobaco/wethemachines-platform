@@ -3,21 +3,15 @@ import ConvergenceDashboard from "./ConvergenceDashboard";
 
 export default function App() {
   const [cycle, setCycle] = useState(null);
-  const [topClusters, setTopClusters] = useState([]);
   const dashboardRef = useRef(null);
 
-  // Fetch live convergence stats and top clusters
+  // Fetch live convergence stats and clusters
   useEffect(() => {
     async function fetchCycle() {
       try {
-        const res = await fetch("/api/cycle"); // cycle includes counts + topClusters
+        const res = await fetch("/api/cycle");
         const data = await res.json();
         setCycle(data);
-
-        // For demo purposes, pick top 3 clusters
-        if (data.clusters && data.clusters.length > 0) {
-          setTopClusters(data.clusters.slice(0, 3));
-        }
       } catch (err) {
         console.error(err);
       }
@@ -39,26 +33,29 @@ export default function App() {
         <div className="container">
           <h2>Welcome to Wethemachines</h2>
           <p>
-            Converge knowledge, not prestige. Submit anonymously, watch clusters form, and participate in governance phases.
+            Submit anonymously, watch clusters emerge, and participate in governance phases safely.
           </p>
 
+          {/* Hero Stats */}
           {cycle && (
-            <p style={{ fontWeight: "bold", marginTop: "1rem" }}>
-              Current Phase: {cycle.phase} | Submissions: {cycle.submissions} | Clusters: {cycle.clusters}
-            </p>
-          )}
+            <div id="hero-stats">
+              <p style={{ fontWeight: "bold", marginBottom: "1rem" }}>
+                Current Phase: {cycle.phase} | Submissions: {cycle.submissions} | Clusters: {cycle.clusters}
+              </p>
 
-          {/* Top clusters preview */}
-          {topClusters.length > 0 && (
-            <div className="cluster-preview">
-              <h4>Top Clusters:</h4>
-              <ul>
-                {topClusters.map(c => (
-                  <li key={c._id}>
-                    <strong>{c.label}</strong> ({c.submissions.length} submissions)
-                  </li>
-                ))}
-              </ul>
+              {/* Top clusters preview */}
+              {cycle.clusters && cycle.clusters.length > 0 && (
+                <div className="cluster-preview">
+                  <h4>Top Clusters</h4>
+                  <ul>
+                    {cycle.clusters.slice(0, 3).map(c => (
+                      <li key={c._id}>
+                        <strong>{c.label}</strong> ({c.submissions.length} submissions)
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
             </div>
           )}
 
