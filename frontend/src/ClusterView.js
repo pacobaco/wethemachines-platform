@@ -1,18 +1,22 @@
-export default function ClusterView({ phase }) {
-  if (phase !== "Deliberation" && phase !== "Convergence") return null;
+import { useEffect, useState } from "react";
 
-  const clusters = [
-    { id: 1, label: "Economic Signals" },
-    { id: 2, label: "Infrastructure Risks" },
-    { id: 3, label: "Cultural Dynamics" }
-  ];
+export default function ClusterView({ phase }) {
+  const [clusters, setClusters] = useState([]);
+
+  useEffect(() => {
+    fetch("/api/synthesize")
+      .then(res => res.json())
+      .then(setClusters);
+  }, []);
+
+  if (!["Deliberation", "Convergence"].includes(phase)) return null;
 
   return (
     <section>
-      <h3>Active Clusters</h3>
+      <h3>Clusters</h3>
       <ul>
         {clusters.map(c => (
-          <li key={c.id}>● {c.label}</li>
+          <li key={c._id}>● {c.label} ({c.submissions.length})</li>
         ))}
       </ul>
     </section>
