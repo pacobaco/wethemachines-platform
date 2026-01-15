@@ -33,3 +33,18 @@ export default function ConvergenceDashboard({ cycle }) {
     </section>
   );
 }
+
+{blogClusters.length > 0 && (
+  <div ref={blogRef} id="blog" style={{ marginTop: "2rem" }}>
+    <h3>Top Blog Posts</h3>
+    <ul>
+      {blogClusters.map(post => (
+        <li key={post.id}>
+          <a href={post.url} target="_blank" rel="noopener noreferrer">
+            {post.title} ({post.date})
+          </a>
+        </li>
+      ))}
+    </ul>
+  </div>
+)}
