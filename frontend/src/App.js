@@ -72,7 +72,7 @@ export default function App() {
       </section>
 
       {/* Dashboard */}
-<div ref={dashboardRef} id="dashboard">
+<div id="dashboard">
   {cycle ? (
     <ConvergenceDashboard
       cycle={cycle}
@@ -81,9 +81,11 @@ export default function App() {
       blogClusters={blogClusters}
     />
   ) : (
-    <p>Loading platform…</p>
+    <div style={{ padding: "2rem", textAlign: "center" }}>
+      Loading platform…
+    </div>
   )}
-</div>   
+</div>
     </>
   );
 }
