@@ -61,17 +61,29 @@ export default function App() {
               </ul>
             </div>
           )}
-
-          <button className="cta-button" onClick={() => scrollToRef(dashboardRef)}>
-            Enter Platform
-          </button>
+<button
+  className="cta-button"
+  onClick={() => dashboardRef.current?.scrollIntoView({ behavior: "smooth" })}
+>
+  Enter Platform
+</button>
+         
         </div>
       </section>
 
       {/* Dashboard */}
-      <div ref={dashboardRef}>
-        {cycle ? <ConvergenceDashboard cycle={cycle} clustersRef={clustersRef} blogRef={blogRef} blogClusters={blogClusters} /> : <p>Loading platform…</p>}
-      </div>
+<div ref={dashboardRef} id="dashboard">
+  {cycle ? (
+    <ConvergenceDashboard
+      cycle={cycle}
+      clustersRef={clustersRef}
+      blogRef={blogRef}
+      blogClusters={blogClusters}
+    />
+  ) : (
+    <p>Loading platform…</p>
+  )}
+</div>   
     </>
   );
 }
