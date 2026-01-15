@@ -1,7 +1,11 @@
-import mongoose from 'mongoose';
-const clusterSchema = new mongoose.Schema({
-  clusterName: String,
-  submissionIds: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Submission' }],
+import mongoose from "mongoose";
+
+const ClusterSchema = new mongoose.Schema({
+  label: String,
+  submissions: [String],
   createdAt: { type: Date, default: Date.now }
 });
-export default mongoose.models.Cluster || mongoose.model('Cluster', clusterSchema);
+
+export default mongoose.models.Cluster ||
+  mongoose.model("Cluster", ClusterSchema);
+
