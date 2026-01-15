@@ -85,6 +85,15 @@ body {
   margin: 1rem 0;
   box-shadow: 0 3px 8px rgba(0,0,0,0.1);
 }
+/* Blog cluster cards in hero */
+.cluster-preview a {
+  color: #1a1a1a;
+  text-decoration: none;
+  font-weight: 500;
+}
+.cluster-preview a:hover {
+  text-decoration: underline;
+}
 
 .cluster-preview h4 {
   margin-bottom: 0.5rem;
