@@ -17,26 +17,20 @@ export default function ConvergenceDashboard() {
   return (
     <section>
       <h2>Convergence Dashboard</h2>
-
       <ul>
         <li><strong>Current Phase:</strong> {cycle.phase}</li>
         <li><strong>Anonymous Submissions:</strong> {cycle.submissions}</li>
-    <AnonymousSubmission phase={cycle.phase} />
-<ClusterView phase={cycle.phase} />
-<AttestationPanel phase={cycle.phase} />
-
         <li><strong>Active Clusters:</strong> {cycle.clusters}</li>
         <li>
-          <strong>Attestations:</strong>{" "}
-          {cycle.attestations} / {cycle.attestationThreshold}
+          <strong>Attestations:</strong> {cycle.attestations} / {cycle.attestationThreshold}
         </li>
       </ul>
+      <progress value={cycle.attestations} max={cycle.attestationThreshold} style={{ width: "100%" }} />
 
-      <progress
-        value={cycle.attestations}
-        max={cycle.attestationThreshold}
-        style={{ width: "100%" }}
-      />
+      {/* Phase-gated components */}
+      <AnonymousSubmission phase={cycle.phase} />
+      <ClusterView phase={cycle.phase} />
+      <AttestationPanel phase={cycle.phase} />
     </section>
   );
 }
