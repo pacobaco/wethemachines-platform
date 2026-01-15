@@ -1,10 +1,14 @@
-function App() {
+import ConvergenceDashboard from "./ConvergenceDashboard";
+
+export default function App() {
   return (
-    <div>
+    <main style={{ fontFamily: "system-ui", padding: "3rem" }}>
       <h1>Wethemachines</h1>
-      <p>Converge knowledge, not prestige.</p>
-    </div>
+      <p><em>Converge knowledge, not prestige.</em></p>
+
+      <hr style={{ margin: "2rem 0" }} />
+
+      <ConvergenceDashboard />
+    </main>
   );
 }
-
-export default App;
