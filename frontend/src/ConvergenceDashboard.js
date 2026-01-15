@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import AnonymousSubmission from "./AnonymousSubmission";
+import ClusterView from "./ClusterView";
+import AttestationPanel from "./AttestationPanel";
 
 export default function ConvergenceDashboard() {
   const [cycle, setCycle] = useState(null);
@@ -18,6 +21,10 @@ export default function ConvergenceDashboard() {
       <ul>
         <li><strong>Current Phase:</strong> {cycle.phase}</li>
         <li><strong>Anonymous Submissions:</strong> {cycle.submissions}</li>
+    <AnonymousSubmission phase={cycle.phase} />
+<ClusterView phase={cycle.phase} />
+<AttestationPanel phase={cycle.phase} />
+
         <li><strong>Active Clusters:</strong> {cycle.clusters}</li>
         <li>
           <strong>Attestations:</strong>{" "}
